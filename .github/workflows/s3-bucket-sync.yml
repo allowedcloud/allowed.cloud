@@ -6,20 +6,22 @@ on:
     - master
 
 jobs:
-  build:
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@master
-      - name: Build
-        uses: TartanLlama/actions-eleventy@master
-        with:
-          args: --output _dist
-          install_dependencies: true
+  # build:
+  #   runs-on: ubuntu-18.04
+  #   steps:
+  #     - uses: actions/checkout@master
+  #     - name: Build
+  #       uses: TartanLlama/actions-eleventy@master
+  #       with:
+  #         args: --output _dist
+  #         install_dependencies: true
   deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
     - uses: jakejarvis/s3-sync-action@master
+      run: |
+        npm install && npm build
       with:
         args: --acl public-read --follow-symlinks --delete
       env:
