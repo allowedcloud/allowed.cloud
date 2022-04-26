@@ -1,8 +1,16 @@
 <footer class="footer" role="contentinfo">
     <div class="footer__inner container">
-        <span>&copy; copyright {{ build.timestamp | dateToFormat('yyyy') }}</span>
-        <a href="http://github.com/maxboeck/eleventastic">
-            {% icon "github" %}Eleventastic
+        <a href="https://twitter.com/allowedcloud" class="footer__github-link">
+            {% icon "twitter" %}
         </a>
+        <a href="mailto: cloudallowed@gmail.com" class="footer__github-link">
+            {% icon "mail" %}
+        </a>
+        <a href="https://github.com/allowedcloud/next_generation" class="footer__github-link">
+            {% icon "github" %}
+        </a>
+    </div>
+    <div class="footer__bottom">
+        <span>{{ build.timestamp | dateToFormat('yyyy') }} Allowed Cloud</span>
     </div>
 </footer>

@@ -1,0 +1,70 @@
+.about {
+    &__avatar {
+        height: 100%;
+        width: 175px;
+        margin: 0 auto;
+        animation: float 6s ease-in-out infinite;
+    }
+    &__name {
+        font-family: $font-family-serif;
+        font-weight: 700;
+        font-size: $step-4;
+        width: 100%;
+        text-align: center;
+        margin-bottom: $space-xs;
+    }
+    &__subheading {
+        text-align: center;
+        font-family: $font-family-sans-serif;
+        font-size: $step--1;
+        font-weight: 500;
+        font-variant: small-caps;
+        color: $brand-red;
+        margin: $space-s 0;
+        margin-bottom: $space-s;
+        & span {
+            color: lighten($brand-red, 5%);
+            opacity: 50%;
+        }
+        @include mq(lg) {
+            max-width: 50%;
+            margin: 0 auto;
+            margin-bottom: $space-s;
+        }
+    }
+    &__bio {
+        margin: 0 auto;
+        max-width: 55ch;
+        color: black;
+    }
+}
+
+@keyframes float {
+	0% {
+		filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+		transform: translatey(0px);
+	}
+	50% {
+		filter: drop-shadow(0 25px 15px rgba(0,0,0,0.1));
+		transform: translatey(-15px);
+	}
+	100% {
+		filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+		transform: translatey(0px);
+	}
+}
+
+// @keyframes float {
+// 	0% {
+// 		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+// 		transform: translatey(0px);
+// 	}
+// 	50% {
+// 		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+// 		transform: translatey(-20px);
+// 	}
+// 	100% {
+// 		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+// 		transform: translatey(0px);
+// 	}
+// }

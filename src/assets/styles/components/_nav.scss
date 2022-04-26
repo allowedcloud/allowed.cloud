@@ -1,33 +1,36 @@
 .nav {
-    &__menu {
-        display: none;
-        position: absolute;
-        left: 0;
-        right: 0;
-        background-color: #fff;
-    }
     &__link {
-        display: block;
-        padding: 0.5em 1em;
-    }
-    &__toggle {
-        @include button-reset;
-    }
-
-    @include mq-down(lg) {
-        &.is-open &__menu {
-            display: block;
+        display: grid;
+        place-content: center;
+        text-decoration: none;
+        color: $gray-600;
+        font-size: $step--2;
+        border-radius: $border-radius-lg;
+        padding: $space-3xs $space-2xs;
+        transition: $trans-slow;
+        box-shadow: 0 0 0 1px $gray-600;
+        @include hover-focus {
+            color: $brand-red;
+            box-shadow: 0 0 0 1px $brand-red;
         }
     }
 
-    @include mq(lg) {
-        &__toggle {
-            display: none;
-        }
-        &__menu {
-            display: flex;
-            position: static;
-            background-color: transparent;
+    &__item {
+        &--active {
+            & a {
+                display: none;
+            }
+            // & a {
+            //     color: lighten($gray-600, 8%);
+            //     opacity: 45%;
+            //     text-decoration: none;
+            //     user-select: none;
+            //     @include hover-focus {
+            //         background-color: transparent;
+            //         color: lighten($brand-red, 3%);
+            //         cursor: not-allowed;
+            //     }
+            // }
         }
     }
 }

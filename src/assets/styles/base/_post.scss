@@ -1,0 +1,54 @@
+.post { 
+    max-width: 55ch;
+    margin: 0 auto;
+    &__title {
+        padding: $space-xs;
+        padding-top: 0;
+        margin: 0;
+        max-width: 30ch;
+        font-weight: 600;
+        font-family: serif;
+        font-size: $step-3;
+    }
+    &__date {
+        display: block;
+        font-family: monospace;
+        font-size: $step--1;
+        padding: $space-xs;
+        padding-top: 0;
+        margin: 0;
+    }
+    &__content {
+        background-color: white;
+        color: black;
+        padding: $space-xs;
+        padding-top: 0;
+        
+        & :first-child {
+            font-size: $step--1;
+            font-style: italic;
+            // color: darken($brand-red, 5%);
+            color: $brand-red;
+            border-bottom: solid 4px $brand-red;
+            padding: $space-xs;
+            margin: 0 !important;
+        }
+
+        & :nth-of-type(2)::first-letter {
+            color: $brand-red;
+            float: left;
+            font-size: 75px;
+            line-height: 60px;
+            padding-top: 4px;
+            padding-right: 8px;
+            padding-left: 3px;
+        }
+
+        & :nth-of-type(n + 1) {
+            margin: $space-s 0;
+        }
+
+        & :not(:first-child)::first-letter {
+        }
+    }
+}

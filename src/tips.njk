@@ -1,0 +1,11 @@
+---
+layout: base
+permalink: /tips/
+---
+
+<div class="container">
+    <h1 class="archive-page__header">All Cloud Tips</h1>
+
+    {% set tipslist = collections.tips %}
+    {% include "components/tipslist.njk" %}
+</div>

@@ -20,5 +20,27 @@ module.exports = {
             chars.unshift(['&#', str[i].charCodeAt(), ';'].join(''))
         }
         return chars.join('')
+    },
+
+    head: function (array, n) {
+        if(!Array.isArray(array) || array.length === 0) {
+            return [];
+        }
+        if( n < 0 ) {
+            return array.slice(n);
+        }
+        return array.slice(0, n);
+    },
+
+    min: function (...numbers) {
+        return Math.min.apply(null, numbers)
+    },
+
+    readableDate: function (dateObj) {
+        return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("MM.dd.yyyy");
+    },
+
+    htmlDateString: function (dateObj) {
+        return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
     }
 }

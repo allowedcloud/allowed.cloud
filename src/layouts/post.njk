@@ -1,7 +1,10 @@
 ---
 layout: base
 ---
-<article class="container">
-    <h1>{{ title }}</h1>
+<article class="post">
+    <h1 class="post__title">{{ title }}</h1>
+    <time class="post__date">{{ date | readableDate }}</time>
+    <div class="post__content">
     {{ content | safe }}
+    </div>
 </article>

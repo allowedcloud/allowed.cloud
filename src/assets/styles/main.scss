@@ -9,6 +9,7 @@
 @import 'utils/functions';
 @import 'utils/variables';
 @import 'utils/mixins';
+@import 'base/_post.scss';
 
 //--------------------
 // BASE MODULES
@@ -34,3 +35,11 @@
 @import 'components/nav';
 @import 'components/footer';
 @import 'components/icon';
+@import 'components/home-landing';
+@import 'components/about';
+@import 'components/_tipslist';
+@import 'components/_postslist';
+
+html {
+    border-top: 6px solid $brand-red;
+}

@@ -2,6 +2,8 @@ const pluginRss = require('@11ty/eleventy-plugin-rss')
 const pluginNavigation = require('@11ty/eleventy-navigation')
 const pluginSvgSprite = require("eleventy-plugin-svg-sprite");
 const markdownIt = require('markdown-it')
+const eleventyGoogleFonts = require("eleventy-google-fonts");
+
 
 const filters = require('./utils/filters.js')
 const transforms = require('./utils/transforms.js')
@@ -15,6 +17,7 @@ module.exports = function (config) {
         path: "./src/assets/icons",
         svgSpriteShortcode: "iconsprite"
     })
+    config.addPlugin(eleventyGoogleFonts);
 
     // Filters
     Object.keys(filters).forEach((filterName) => {
@@ -58,6 +61,18 @@ module.exports = function (config) {
     // Deep-Merge
     config.setDataDeepMerge(true)
 
+
+    // Tags
+    function filterTagList(tags) {
+        return (tags || []).filter(tag => ["all", "nav", "post", "posts", "tips"].indexOf(tag) === -1);
+    }
+
+    config.addFilter("filterTagList", filterTagList)
+
+    // Excerpt
+    config.addShortcode('excerpt', article => extractExcerpt(article));
+
+
     // Base Config
     return {
         dir: {
@@ -71,4 +86,33 @@ module.exports = function (config) {
         htmlTemplateEngine: 'njk',
         markdownTemplateEngine: 'njk'
     }
+}
+
+// Excerpts
+function extractExcerpt(article) {
+  if (!article.hasOwnProperty('templateContent')) {
+    console.warn('Failed to extract excerpt: Document has no property "templateContent".');
+    return null;
+  }
+ 
+  let excerpt = null;
+  const content = article.templateContent;
+ 
+  // The start and end separators to try and match to extract the excerpt
+  const separatorsList = [
+    { start: '<!-- Excerpt Start -->', end: '<!-- Excerpt End -->' },
+    { start: '<p>', end: '</p>' }
+  ];
+ 
+  separatorsList.some(separators => {
+    const startPosition = content.indexOf(separators.start);
+    const endPosition = content.indexOf(separators.end);
+ 
+    if (startPosition !== -1 && endPosition !== -1) {
+      excerpt = content.substring(startPosition + separators.start.length, endPosition).trim();
+      return true; // Exit out of array loop on first match
+    }
+  });
+ 
+  return excerpt;
 }

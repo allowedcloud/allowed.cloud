@@ -1,0 +1,21 @@
+<ol reversed class="tipslist" style="counter-reset: start-from {{ (tipslistCounter or tipslist.length) + 1 }}">
+    {% for tip in tipslist | reverse %}
+        <li class="tipslist__item{% if tip.url == url %} tipslist__item-active{% endif %}">
+                <a href="{{ tip.url | url }}" class="tipslist__title">
+                    {% if tip.data.title %}
+                        {{ tip.data.title }}
+                    {% else %}
+                        <code>{{ tip.url }}</code>
+                    {% endif %}
+                </a>
+            <time class="tipslist__date" datetime="{{ tip.date | htmlDateString }}">{{ tip.date | readableDate }}</time>
+            <div class="tipslist__excerpt">
+                {% excerpt tip %}
+            </div>
+            {% for tag in tip.data.tags | filterTagList %}
+                {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+                <p class="tipslist__tag">#{{ tag }}</p>
+            {% endfor %}
+        </li>
+    {% endfor %}
+</ol>

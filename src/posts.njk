@@ -1,0 +1,11 @@
+---
+layout: base
+permalink: /posts/
+---
+
+<div class="container">
+    <h1 class="archive-page__header">All Posts</h1>
+
+    {% set postslist = collections.posts %}
+    {% include "components/postslist.njk" %}
+</div>
