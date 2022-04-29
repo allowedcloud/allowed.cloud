@@ -3,6 +3,7 @@ const pluginNavigation = require('@11ty/eleventy-navigation')
 const pluginSvgSprite = require("eleventy-plugin-svg-sprite");
 const markdownIt = require('markdown-it')
 const eleventyGoogleFonts = require("eleventy-google-fonts");
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 
 const filters = require('./utils/filters.js')
@@ -18,6 +19,7 @@ module.exports = function (config) {
         svgSpriteShortcode: "iconsprite"
     })
     config.addPlugin(eleventyGoogleFonts);
+    config.addPlugin(syntaxHighlight);
 
     // Filters
     Object.keys(filters).forEach((filterName) => {
@@ -64,7 +66,7 @@ module.exports = function (config) {
 
     // Tags
     function filterTagList(tags) {
-        return (tags || []).filter(tag => ["all", "nav", "post", "posts", "tips"].indexOf(tag) === -1);
+        return (tags || []).filter(tag => ["all", "nav", "post", "posts", "tips", "notes"].indexOf(tag) === -1);
     }
 
     config.addFilter("filterTagList", filterTagList)

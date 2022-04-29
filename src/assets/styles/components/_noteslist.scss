@@ -44,7 +44,7 @@
     }
 }
 
-.tipslist {
+.noteslist {
     &__item {
         position: relative;
         background-color: white;
@@ -57,22 +57,6 @@
         box-shadow: var(--shadow-elevation-medium);
         @include hover-focus {
             box-shadow: 0 0 0 2px $brand-red;
-        }
-        &:first-of-type {
-            // box-shadow: 0 0 0 2px $brand-red;
-            @include hover-focus {
-                box-shadow: 0 0 0 2px $brand-red;
-            }
-            .tipslist__title {
-                text-decoration-color: $brand-red;
-                font-weight: 700;
-                @include hover-focus {
-                    text-decoration-color: $brand-fg;
-                }
-            }
-            .tipslist__new {
-                display: inline;
-            }
         }
     }
     &__top {

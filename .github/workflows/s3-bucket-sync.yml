@@ -6,16 +6,7 @@ on:
     - master
 
 jobs:
-  # build:
-  #   runs-on: ubuntu-18.04
-  #   steps:
-  #     - uses: actions/checkout@master
-  #     - name: Build
-  #       uses: TartanLlama/actions-eleventy@master
-  #       with:
-  #         args: --output _dist
-  #         install_dependencies: true
-  deploy:
+  build_deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master

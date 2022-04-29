@@ -1,4 +1,5 @@
 const { DateTime } = require('luxon')
+const typeset = require('typeset')
 
 module.exports = {
     dateToFormat: function (date, format) {
@@ -42,5 +43,12 @@ module.exports = {
 
     htmlDateString: function (dateObj) {
         return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
+    },
+
+    typeSet: function (content) {
+        const options = {
+            disable: ['hyphenate']
+        }
+        return typeset(content, options)
     }
 }

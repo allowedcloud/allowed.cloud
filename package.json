@@ -47,6 +47,8 @@
     "webpack": "^5.28.0"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3"
+    "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
+    "cross-env": "^7.0.3",
+    "typeset": "^0.3.1"
   }
 }

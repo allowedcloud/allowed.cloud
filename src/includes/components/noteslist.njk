@@ -1,0 +1,21 @@
+<ol reversed class="noteslist" style="counter-reset: start-from {{ (noteslistCounter or notesList.length) + 1 }}">
+    {% for tip in notesList | reverse %}
+        <li class="noteslist__item{% if tip.url == url %} noteslist__item-active{% endif %}">
+                <a href="{{ tip.url | url }}" class="noteslist__title">
+                    {% if tip.data.title %}
+                        {{ tip.data.title }}
+                    {% else %}
+                        <code>{{ tip.url }}</code>
+                    {% endif %}
+                </a>
+            {# <time class="noteslist__date" datetime="{{ tip.date | htmlDateString }}">{{ tip.date | readableDate }}</time> #}
+            <div class="noteslist__excerpt">
+                {% excerpt tip %}
+            </div>
+            {% for tag in tip.data.tags | filterTagList %}
+                {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+                <p class="noteslist__tag">#{{ tag }}</p>
+            {% endfor %}
+        </li>
+    {% endfor %}
+</ol>

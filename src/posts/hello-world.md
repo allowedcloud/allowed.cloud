@@ -4,7 +4,7 @@ date: 2022-03-31
 ---
 
 <!-- EXCERPT START -->
-What the heck is going on around here?
+What's going on around here? Allow me to introduce myself.
 <!-- EXCERPT END-->
 
 Lorem Ipsum Dolor.

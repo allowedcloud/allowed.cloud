@@ -1,4 +1,4 @@
-.post { 
+.post {
     max-width: 55ch;
     margin: 0 auto;
     &__title {
@@ -23,17 +23,25 @@
         color: black;
         padding: $space-xs;
         padding-top: 0;
-        
-        & :first-child {
-            font-size: $step--1;
-            font-style: italic;
-            // color: darken($brand-red, 5%);
-            color: $brand-red;
-            border-bottom: solid 4px $brand-red;
-            padding: $space-xs;
-            margin: 0 !important;
-        }
 
+        // EXCERPT
+        // & :first-child {
+        //     font-size: $step--1;
+        //     font-style: italic;
+        //     // color: darken($brand-red, 5%);
+        //     color: $brand-red;
+        //     border-bottom: solid 4px $brand-red;
+        //     padding: $space-xs;
+        //     margin: 0 !important;
+        //     & span {
+        //         color: $brand-red !important;
+        //         border: none;
+        //         padding: 0;
+        //         margin: 0;
+        //     }
+        // }
+
+        // LEAD LETTER
         & :nth-of-type(2)::first-letter {
             color: $brand-red;
             float: left;
@@ -44,11 +52,121 @@
             padding-left: 3px;
         }
 
-        & :nth-of-type(n + 1) {
-            margin: $space-s 0;
+        // REST OF PARAGRAPHS
+        // & :nth-of-type(n + 1) {
+        //     margin: $space-s 0;
+
+        //     & span {
+        //         border: none;
+        //         margin: 0;
+        //         padding: 0;
+        //         color: black;
+        //     }
+        // }
+
+        code {
+            font-size: $step--1 !important;
         }
 
-        & :not(:first-child)::first-letter {
+        pre[class*=language-] {
+            margin: $space-m 0;
+        }
+
+        h2,
+        h3,
+        h4 {
+            color: $brand-red;
+            font-family: $font-family-serif;
+            padding-top: $space-m;
+        }
+
+        blockquote {
+            display: block;
+            padding: $space-m $space-s;
+            & p {
+                font-size: $step-3 !important;
+                font-family: $font-family-serif;
+                line-height: 1.4;
+                border-bottom: none !important;
+                & span {
+                    font-size: $step-3 !important;
+                }
+            }
         }
     }
+}
+
+/*
+ Small Capitals
+ https://en.wikipedia.org/wiki/Small_caps 
+*/
+
+.small-caps {
+    font-variant: small-caps;
+}
+
+/*
+ Optical margin alignment for particular letters 
+ https://en.wikipedia.org/wiki/Optical_margin_alignment
+*/
+
+.pull-T,
+.pull-V,
+.pull-W,
+.pull-Y {
+    margin-left: -0.07em;
+}
+.push-T,
+.push-V,
+.push-W,
+.push-Y {
+    margin-right: 0.07em;
+}
+
+.pull-O,
+.pull-C,
+.pull-o,
+.pull-c {
+    margin-left: -0.04em;
+}
+.push-O,
+.push-C,
+.push-o,
+.push-c {
+    margin-right: 0.04em;
+}
+
+.pull-A {
+    margin-left: -0.03em;
+}
+.push-A {
+    margin-right: 0.03em;
+}
+
+/* 
+ Quotation mark 
+ https://en.wikipedia.org/wiki/Quotation_mark) 
+*/
+
+/* Single quotation marks (') */
+.pull-single {
+    margin-left: -0.27em;
+}
+.push-single {
+    margin-right: 0.27em;
+}
+
+.pull-double,
+.push-double,
+.pull-single,
+.push-single {
+    display: inline-block;
+}
+
+/* Double quotation marks (") */
+.pull-double {
+    margin-left: -0.46em;
+}
+.push-double {
+    margin-right: 0.46em;
 }

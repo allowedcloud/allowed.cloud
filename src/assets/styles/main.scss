@@ -39,6 +39,8 @@
 @import 'components/about';
 @import 'components/_tipslist';
 @import 'components/_postslist';
+@import 'components/_noteslist';
+@import 'base/_hgcolors';
 
 html {
     border-top: 6px solid $brand-red;

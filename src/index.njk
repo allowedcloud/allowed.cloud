@@ -4,26 +4,44 @@ layout: base
 
 <div class="container">
     {% include "components/home-landing.njk" %}
-
     <div class="home-tips-list">
-    {% set maxTips = collections.tips.length | min(3) %}
-    <h1 class="home-tips-list__header">
-        {{ maxTips }} things allowed in the cloud
-    </h1>
-    {% set tipslist = collections.tips | head(-3) %}
-    {% set tipslistCounter = collections.tips | length %}
-    {% include "components/tipslist.njk" %}
-    <p class="home-posts-list__more-link"><a href="{{ '/tips/' | url }}">More tips</a>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/></svg>
-    </p>
+        {% set maxTips = collections.tips.length | min(3) %}
+        <h1 class="home-tips-list__header">
+            {{ maxTips }} things allowed in the cloud
+        </h1>
+        {% set tipslist = collections.tips | head(-3) %}
+        {% set tipslistCounter = collections.tips | length %}
+        {% include "components/tipslist.njk" %}
+        <p class="home-posts-list__more-link">
+            <a href="{{ '/tips/' | url }}">More tips</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/> </svg>
+        </p>
     </div>
-
+    {# <div class="home-tips-list">
+        {% set maxNotes = collections.notes.length | min(3) %}
+        <h1 class="home-tips-list__header">
+            {{ maxNotes }} notes
+        </h1>
+        {% set notesList = collections.notes | head(-3) %}
+        {% set noteslistCounter = collections.notes | length %}
+        {% include "components/noteslist.njk" %}
+        <p class="home-posts-list__more-link"><a href="{{ '/notes/' | url }}">More notes</a>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/></svg>
+        </p>
+        </div> #}
     <div class="home-posts-list">
-    {% set maxPosts = collections.posts.length | min(3) %}
-    <h1 class="home-tips-list__header">Latest {% if maxPosts == 1 %}Thought{% else %}{{ maxPosts }} Thoughts{% endif %}</h1>
-    {% set postslist = collections.posts | head(-3) %}
-    {% set postslistCounter = collections.posts | length %}
-    {% include "components/postslist.njk" %}
-    <p class="home-posts-list__more-link"><a href="{{ '/posts/' | url }}">More posts &nbsp;➝</a></p>
+        {% set maxPosts = collections.posts.length | min(3) %}
+        <h1 class="home-tips-list__header">Latest
+            {% if maxPosts == 1 %}Post
+            {% else %}
+                {{ maxPosts }} Posts{% endif %}
+        </h1>
+        {% set postslist = collections.posts | head(-3) %}
+        {% set postslistCounter = collections.posts | length %}
+        {% include "components/postslist.njk" %}
+        <p class="home-posts-list__more-link">
+            <a href="{{ '/posts/' | url }}">More posts</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/> </svg>
+        </p>
     </div>
 </div>
