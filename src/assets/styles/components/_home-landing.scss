@@ -1,7 +1,7 @@
 .home-landing {
     margin-top: $space-m;
     max-width: 45ch;
-    margin: 0 auto;
+    margin: $space-m auto;
     &__header {
         font-weight: 300;
         font-size: $step-3;

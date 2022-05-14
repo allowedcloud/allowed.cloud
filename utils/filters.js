@@ -47,7 +47,7 @@ module.exports = {
 
     typeSet: function (content) {
         const options = {
-            disable: ['hyphenate']
+            disable: ['hyphenate', 'ligatures']
         }
         return typeset(content, options)
     }

@@ -38,8 +38,17 @@
             margin-left: $space-2xs;
         }
         svg {
+            transition: transform 180ms ease-out;
             margin-top: 5px;
             margin-left: $space-3xs;
+        }
+        @include hover-focus {
+          a {
+            text-decoration: none;
+          }
+          svg {
+            transform: translateX(12px);
+          }
         }
     }
 }
@@ -65,7 +74,7 @@
             }
             .tipslist__title {
                 text-decoration-color: $brand-red;
-                font-weight: 700;
+                font-weight: 500;
                 @include hover-focus {
                     text-decoration-color: $brand-fg;
                 }
@@ -100,8 +109,8 @@
     &__title {
         display: block;
         font-family: $font-family-serif;
-        font-size: $step-2;
-        font-weight: 700;
+        font-size: $step-3;
+        font-weight: 500;
         text-decoration: underline;
         line-height: 1.3;
         text-underline-offset: 3px;
@@ -130,7 +139,7 @@
         color: $gray-400;
         font-size: $step--1;
         font-family: $font-family-sans-serif;
-        font-weight: 500;
+        font-weight: 400;
         font-style: italic;
         margin: $space-xs 0;
     }

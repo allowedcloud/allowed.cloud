@@ -1,15 +1,18 @@
 .post {
-    max-width: 55ch;
+    max-width: 65ch;
     margin: 0 auto;
+
     &__title {
         padding: $space-xs;
         padding-top: 0;
         margin: 0;
         max-width: 30ch;
-        font-weight: 600;
-        font-family: serif;
-        font-size: $step-3;
+        font-weight: 700;
+        font-family: $font-family-serif;
+        font-size: $step-4;
+        line-height: 1;
     }
+
     &__date {
         display: block;
         font-family: monospace;
@@ -18,31 +21,72 @@
         padding-top: 0;
         margin: 0;
     }
+
     &__content {
         background-color: white;
-        color: black;
+        color: $brand-text;
         padding: $space-xs;
         padding-top: 0;
+        padding-bottom: $space-xl;
+        max-width: 100vw;
+        text-align: center;
 
         // EXCERPT
-        // & :first-child {
-        //     font-size: $step--1;
-        //     font-style: italic;
-        //     // color: darken($brand-red, 5%);
-        //     color: $brand-red;
-        //     border-bottom: solid 4px $brand-red;
-        //     padding: $space-xs;
-        //     margin: 0 !important;
-        //     & span {
-        //         color: $brand-red !important;
-        //         border: none;
-        //         padding: 0;
-        //         margin: 0;
-        //     }
-        // }
+        & p:first-of-type {
+            font-size: $step--1;
+            font-style: italic;
+            font-family: $font-family-serif;
+            font-weight: 400;
+            letter-spacing: 0.7px;
+            line-height: 1.2;
+            color: $brand-red;
+            padding: $space-xs;
+            padding-top: $space-s;
+            margin: 0 auto;
+            margin-bottom: $space-m;
+            border-bottom: 4px solid $brand-red;
+            max-width: fit-content;
+            @include mq(lg) {
+                padding-top: $space-m;
+                margin: 0 $space-s;
+            }
+
+            & span {
+                padding: 0;
+                margin: 0;
+                border: none;
+            }
+        }
+
+        & p {
+            margin: $space-s auto;
+            line-height: 1.8;
+            max-width: 55ch;
+            text-align: left;
+
+            & code {
+                font-family: $font-family-monospace;
+                font-weight: 500;
+                padding: $space-3xs $space-2xs;
+                border-radius: 0.25rem;
+                color: black;
+                background-color: darken($brand-bg, 2%);
+            }
+
+            & a {
+                color: $brand-fg;
+                // text-decoration-style: dotted;
+                text-decoration-thickness: 2px;
+                text-underline-offset: 2px;
+
+                @include mq(lg) {
+                    text-underline-offset: 4px;
+                }
+            }
+        }
 
         // LEAD LETTER
-        & :nth-of-type(2)::first-letter {
+        & p:nth-of-type(2)::first-letter {
             color: $brand-red;
             float: left;
             font-size: 75px;
@@ -50,26 +94,43 @@
             padding-top: 4px;
             padding-right: 8px;
             padding-left: 3px;
+
+            @include mq(lg) {
+                padding-top: 8px;
+            }
         }
 
-        // REST OF PARAGRAPHS
-        // & :nth-of-type(n + 1) {
-        //     margin: $space-s 0;
-
-        //     & span {
-        //         border: none;
-        //         margin: 0;
-        //         padding: 0;
-        //         color: black;
-        //     }
-        // }
+        details {
+            summary {
+                display: list-item;
+                margin-left: $space-2xs;
+                cursor: pointer;
+                user-select: none;
+                font-weight: 600;
+                text-align: left;
+                &::marker {
+                    color: $brand-red !important;
+                    font-size: $step--1;
+                }
+            }
+            p {
+                font-style: normal !important;
+                padding-top: $space-3xs !important;
+                font-weight: 400 !important;
+            }
+        }
 
         code {
             font-size: $step--1 !important;
+            border-bottom: none !important;
         }
 
         pre[class*=language-] {
+            color: #393A34 !important;
             margin: $space-m 0;
+            border: none;
+            border-radius: 0.50rem;
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px, 0 0 0 1px $gray-200;
         }
 
         h2,
@@ -77,19 +138,53 @@
         h4 {
             color: $brand-red;
             font-family: $font-family-serif;
-            padding-top: $space-m;
+            font-weight: 600;
+            border-bottom: none;
+            text-align: left;
+        }
+
+        h2 {
+            font-size: $step-3;
+            margin: $space-l 0;
+            @include mq(lg) {
+                margin: $space-m $space-xs;
+            }
+            text-align: left;
+        }
+
+        h3 {
+            font-size: $step-2;
+            margin: $space-m 0;
+            text-align: left;
+        }
+
+        img {
+            // object-fit: cover;
+            // aspect-ratio: 1/1;
+            width: auto;
+            max-width: 100%;
+            @include mq(lg) {
+                margin: $space-s 0;
+            }
         }
 
         blockquote {
             display: block;
-            padding: $space-m $space-s;
+            padding: 0;
+            margin: 0;
+            margin-top: $space-l;
+
             & p {
-                font-size: $step-3 !important;
+                padding: 0;
+                margin: 0;
+                font-size: $step-2 !important;
                 font-family: $font-family-serif;
-                line-height: 1.4;
+                font-weight: 400;
+                line-height: 1.3;
                 border-bottom: none !important;
+
                 & span {
-                    font-size: $step-3 !important;
+                    font-size: $step-2 !important;
                 }
             }
         }
@@ -98,7 +193,7 @@
 
 /*
  Small Capitals
- https://en.wikipedia.org/wiki/Small_caps 
+ https://en.wikipedia.org/wiki/Small_caps
 */
 
 .small-caps {
@@ -106,7 +201,7 @@
 }
 
 /*
- Optical margin alignment for particular letters 
+ Optical margin alignment for particular letters
  https://en.wikipedia.org/wiki/Optical_margin_alignment
 */
 
@@ -116,6 +211,7 @@
 .pull-Y {
     margin-left: -0.07em;
 }
+
 .push-T,
 .push-V,
 .push-W,
@@ -129,6 +225,7 @@
 .pull-c {
     margin-left: -0.04em;
 }
+
 .push-O,
 .push-C,
 .push-o,
@@ -139,19 +236,21 @@
 .pull-A {
     margin-left: -0.03em;
 }
+
 .push-A {
     margin-right: 0.03em;
 }
 
-/* 
- Quotation mark 
- https://en.wikipedia.org/wiki/Quotation_mark) 
+/*
+ Quotation mark
+ https://en.wikipedia.org/wiki/Quotation_mark)
 */
 
 /* Single quotation marks (') */
 .pull-single {
     margin-left: -0.27em;
 }
+
 .push-single {
     margin-right: 0.27em;
 }
@@ -167,6 +266,7 @@
 .pull-double {
     margin-left: -0.46em;
 }
+
 .push-double {
     margin-right: 0.46em;
 }
