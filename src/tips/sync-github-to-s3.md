@@ -11,19 +11,25 @@ tags:
 Create and configure an S3 bucket for static website hosting. Have Github build your static site and sync the output to the S3 bucket.
 <!-- EXCERPT END -->
 
-The first aspect to think about is how your static site is built and what it outputs. I'm using [Eleventy](https://11ty.dev) which is JavaScript. My _how_ is the build command `npm run build`. The _what_ is a folder called `/dist`. Next, we need to consider how we can put that `/dist` folder into a place that is accessible to everyone. Since currently it's only on our computer, only we can see it.
+The first aspect to think about is how your static site is built and what it outputs. I'm using [Eleventy](https://11ty.dev) which is JavaScript. My _how_ is the build command `npm run build`. The _what_ is a folder called `/dist`. Next, we need to consider how we can put that `/dist` folder into a place that is accessible to everyone. Currently it's only on our computer, only we can see it.
 
 In other words, we want to put our website into production. When doing so, it's best to keep track of any changes we make. When we make changes we could say we're creating new versions of our website. To help manage all this we'll use software called version control. 
 
-If we want to share our software—and finished website—with other people we'll have to store it somewhere on the Internet. This is where Github comes into play. It allows us to have a copy of our local software repository on the Internet for others to see. But still, that's only our code. It isn't the output of our code which is the website everyone will see. If you went to the `/dist` folder on Github, you'd see code. So we have to find a way for that `/dist` folder to get presented as our website and not the code. Version control unfortunately won't help us with this.
+If we want to share our code—and finished website—with other people we'll have to store it somewhere on the Internet. This is where Github comes into play. It allows us to have a copy of our local code repository on the Internet for others to see. But still, that's only our code. It isn't the output of our code which is the website everyone will see. If you went to the `/dist` folder on Github, you'd see code. So we have to find a way for that `/dist` folder to be presented as our website and not the code. Version control unfortunately won't help us with this.
 
 
-We need a web server! A web server is a special piece of software that will be able to _serve_ the `/dist` folder how we want. Being that our website is static, we don't have to deploy our own web server. Instead, we can have an S3 bucket act like a web server for us. We'll then have Github build our website code and take the outputted `/dist` folder contents and send them over to the S3 bucket. This will happen every time we commit a new change to our repository. 
+We need a web server! A web server is a special piece of software that will be able to _serve_ the `/dist` folder how we want. Being that our website is static, we don't have to deploy our own web server. Instead, we can have an S3 bucket act like a web server for us. We'll then have Github build our website code, take the output and send them over to the S3 bucket. Everytime we commit a change to our repository, this process takes place.
  
 
 <details>
 <Summary>&nbsp;Static vs. Dynamic websites</summary>
-<p>On a static website, individual webpages include static content. They might also contain client-side scripts. By contrast, a dynamic website relies on server-side processing, including server-side scripts, such as PHP, JSP, or ASP.NET.</p>
+<p>
+<em>"On a static website, individual webpages include static content. They might also contain client-side scripts. By contrast, a dynamic website relies on server-side processing, including server-side scripts, such as PHP, JSP, or ASP.NET."</em>
+<br/>
+<br/>
+<a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html" style="display:block;text-align:right">AWS S3 Documentation</a>
+</p>
+<br/>
 </details>
 
 Here's a diagram of what we're trying to achieve:
@@ -50,7 +56,7 @@ We need to unblock public access, so click **Block public access (bucket setting
 
 <img src="/assets/images/gh-s3-sync-3.png">
 
-Next, scroll down in the **Permission** tab to **Access Control list (ACL)** settings
+Next, scroll down in the **Permission** tab to **Access Control list (ACL)** settings:
 
 <img src="/assets/images/gh-s3-sync-4.png">
 
@@ -182,4 +188,4 @@ Commit and push the new YAML configuration file to your remote repository on Git
 
 We've discussed a simple way you can build your static website on Github with an Action and then sync the output to an S3 bucket. Not just any bucket though, a special bucket that we have configured to act as a web server. Still, we don't have our own domain name pointing to the website. In the next post, that is what we will go over. Doing that will not only allow us to use our own domain name. But it will also distribute our website throughout a far-reaching network. The benefit of that is people don't have to travel all the way to Eastern Virginia to visit our website. Which will make it load faster!
 
-It's worth thinking about how this process can relate to other circumstances. In our case, we're building and syncing a static website to an S3 bucket. But it doesn't have to be only that. There might be many situations where you need to take a file in a repository and put it into an S3 bucket. At the end of the day, that's all we're doing. With the added build step inbetween.
+It's worth thinking about how this process can relate to other circumstances. In our case, we're building and syncing a static website to an S3 bucket. But it doesn't have to be only that. There might be many situations where you need to take a file in a repository and put it into an S3 bucket. At the end of the day, that's all we're doing. With the added build step inbetween. I always find it helpful breaking things down to simplest terms.
