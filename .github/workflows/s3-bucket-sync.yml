@@ -23,4 +23,4 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     - name: Invalidate cache
       run: |
-        aws cloudfront create-invalidation -distribution-id E2213CB65LJCP1 -paths "/*"
+        aws cloudfront create-invalidation --distribution-id E2213CB65LJCP1 -paths "/*"
