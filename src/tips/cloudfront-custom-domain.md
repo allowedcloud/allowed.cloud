@@ -1,5 +1,5 @@
 ---
-title: Adding a Custom Domain to a CloudFront Distribution
+title: Add an Alternate Domain Name to a CloudFront Distribution
 date: 2022-06-26
 tags:
     - beginner
@@ -8,10 +8,10 @@ tags:
 ---
 
 <!-- EXCERPT START -->
-CloudFront allows us to use a custom domain so we don't have to use the distribution domain name.
+CloudFront allows the use an alternate domain so you don't have to use the assigned distribution domain name.
 <!-- EXCERPT END -->
 
-In the last post, we discussed how to deploy a static website living in an S3 bucket onto CloudFront. As it stands, the website is accessible from the **Distribution domain name**. But that is just a randomly generated alphanumeric domain name. It's not something we would want to give out to people so they could visit our website. It's hard to remember! So, what we can do is attach our own custom domain to the CloudFront distribution. That way, people can use the custom domain name instead of the distribution domain name to access our website. Since I use NameCheap and Cloudflare, this might be a bit untraditional. But, overall, the method is the same regardless of which domain registrar you use.
+In the last post, we discussed how to deploy a static website living in an S3 bucket onto CloudFront. As it stands, the website is accessible from the **Distribution domain name**. But that is just a randomly generated alphanumeric domain name. It's not something we would want to give out to people so they could visit our website. It's hard to remember! So, what we can do is attach our own custom domain to the CloudFront distribution. That way, people can use our domain name instead of the distribution domain name to access the website. Since I use NameCheap and Cloudflare, this might be a bit untraditional. But, overall, the method is the same regardless of which domain registrar you use.
 
 ## Domain registrar
 
