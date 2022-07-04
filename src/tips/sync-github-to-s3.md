@@ -142,8 +142,8 @@ jobs:
     - name: Build static website
       run: |
         npm install && npm run build
-    - uses: jakejarvis/s3-sync-action@master
-    - name: Sync to S3 bucket
+    - name: Sync
+      uses: jakejarvis/s3-sync-action@master
       with:
         args: --acl public-read --follow-symlinks --delete
       env:
@@ -165,8 +165,8 @@ jobs:
     - name: Build static website
       run: |
         npm install && npm run build
-    - uses: jakejarvis/s3-sync-action@master
-    - name: Sync to S3 bucket
+    - name: Sync
+      uses: jakejarvis/s3-sync-action@master
       with:
         args: --acl public-read --follow-symlinks --delete
       env:

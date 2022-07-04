@@ -55,8 +55,8 @@ jobs:
     - name: Build
       run: |
         npm install && npm run build
-    - uses: jakejarvis/s3-sync-action@master
     - name: Sync
+      uses: jakejarvis/s3-sync-action@master
       with:
         args: --acl public-read --follow-symlinks --delete
       env:
