@@ -5,11 +5,13 @@ layout: base
 <div class="container">
     {% include "components/home-landing.njk" %}
     <div class="home-tips-list">
-        {% set maxTips = collections.tips.length | min(3) %}
+        {# {% set maxTips = collections.tips.length | min(3) %} #}
+        {% set maxTips = collections.tips.length %}
         <h1 class="home-tips-list__header">
             {{ maxTips }} things allowed in the cloud
         </h1>
-        {% set tipslist = collections.tips | head(-3) %}
+        {# {% set tipslist = collections.tips | head(-3) %} #}
+        {% set tipslist = collections.tips %}
         {% set tipslistCounter = collections.tips | length %}
         {% include "components/tipslist.njk" %}
         <p class="home-posts-list__more-link">
